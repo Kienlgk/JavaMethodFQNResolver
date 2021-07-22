@@ -10,9 +10,9 @@ This tool is modified from https://github.com/mhilmiasyrofi/ausearch in order to
 
 ## Getting Started
 
-- Needed jars should be placed at `src/com/project/methodfqnresolver/jars/`. Although the tool tries to download maven packages from import statement, it would be better if needed jars are prepared.
-- Java files to be resolved should be placed at `src/com/project/methodfqnresolver/testCodes/`.
-- Output files would be available at `src/com/project/methodfqnresolver/outputs/`
+- Needed jars should be placed at `src/main/java/com/project/methodfqnresolver/jars/`. Although the tool tries to download maven packages from import statement, it would be better if needed jars are prepared.
+- Java files to be resolved should be placed at `src/main/java/com/project/methodfqnresolver/testCodes/`.
+- Output files would be available at `src/main/java//com/project/methodfqnresolver/outputs/`
 
 ## How to Run
 

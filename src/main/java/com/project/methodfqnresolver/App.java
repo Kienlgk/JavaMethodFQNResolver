@@ -3,45 +3,30 @@ package com.project.methodfqnresolver;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import com.github.javaparser.ast.expr.Expression;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.project.methodfqnresolver.model.MavenPackage;
 import com.project.methodfqnresolver.model.Query;
-//import com.project.methodfqnresolver.model.ResolvedData;
 import com.project.methodfqnresolver.model.ResolvedFile;
-//import com.project.methodfqnresolver.model.Response;
-//import com.project.methodfqnresolver.model.SynchronizedData;
-//import com.project.methodfqnresolver.model.SynchronizedFeeder;
 import com.project.methodfqnresolver.model.SynchronizedTypeSolver;
-//import com.project.methodfqnresolver.model.GithubToken;
 
 import com.project.methodfqnresolver.utils.QueriesUtil;
 import com.project.methodfqnresolver.utils.FileUtil;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -52,11 +37,9 @@ import com.github.javaparser.ast.stmt.BlockStmt;
 
 import com.github.javaparser.ast.expr.Name;
 import com.github.javaparser.ast.expr.MethodCallExpr;
-import com.github.javaparser.ast.expr.NameExpr;
 import com.github.javaparser.resolution.UnsolvedSymbolException;
 import com.github.javaparser.resolution.declarations.ResolvedMethodDeclaration;
 import com.github.javaparser.resolution.types.ResolvedType;
-import com.github.javaparser.resolution.declarations.ResolvedValueDeclaration;
 import com.github.javaparser.symbolsolver.JavaSymbolSolver;
 import com.github.javaparser.symbolsolver.model.resolution.TypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSolver;
@@ -91,7 +74,7 @@ public class App {
     private static final int MAX_RESULT = 1;
 
     // folder location to save the downloaded files and jars
-    private static String PROJ_DIR = "src/com/project/methodfqnresolver/";
+    private static String PROJ_DIR = "src/main/java/com/project/methodfqnresolver/";
 //    private static String CODE_DIR = PROJ_DIR + "codes/";
     private static String CODE_DIR = PROJ_DIR + "testCodes/";
     private static String SNIPPET_OUT_DIR = PROJ_DIR + "codeSnipppets/";
@@ -250,7 +233,6 @@ public class App {
             }
         }
 
-        // System.out.println();
          System.out.println("=== Needed Packages ==");
          for (int i = 0; i < neededPackages.size(); i++) {
             System.out.println(neededPackages.get(i));
@@ -287,7 +269,6 @@ public class App {
         // + mavenPackages.get(i).getArtifactId());
         // }
 
-        // System.out.println();
         System.out.println("=== Downloading Packages ==");
         for (int i = 0; i < mavenPackages.size(); i++) {
             String pathToJar = downloadMavenJar(mavenPackages.get(i).getGroupId(),
