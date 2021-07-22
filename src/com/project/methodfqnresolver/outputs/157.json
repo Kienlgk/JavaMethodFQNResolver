@@ -1,0 +1,435 @@
+[
+  {
+    "args": ["clazz.getModifiers()"],
+    "fqn": "java.lang.reflect.Modifier.isPublic",
+    "caller": "Modifier",
+    "expression": "Modifier.isPublic(clazz.getModifiers())",
+    "file": "157.txt",
+    "codeBlockLine": 93,
+    "codeBlock": "{\n    if (!Modifier.isPublic(clazz.getModifiers())) {\n        return new JavaBeanSerializer(clazz);\n    }\n    boolean asm = this.asm;\n    if (asm && asmFactory.isExternalClass(clazz) || clazz == Serializable.class || clazz == Object.class) {\n        asm = false;\n    }\n    {\n        JSONType annotation = clazz.getAnnotation(JSONType.class);\n        if (annotation != null && annotation.asm() == false) {\n            asm = false;\n        }\n    }\n    if (asm && !ASMUtils.checkName(clazz.getName())) {\n        asm = false;\n    }\n    for (Field field : clazz.getDeclaredFields()) {\n        JSONField annotation = field.getAnnotation(JSONField.class);\n        if (annotation != null && !ASMUtils.checkName(annotation.name())) {\n            asm = false;\n            break;\n        }\n    }\n    if (asm) {\n        try {\n            ObjectSerializer asmSerializer = createASMSerializer(clazz);\n            if (asmSerializer != null) {\n                return asmSerializer;\n            }\n        } catch (ClassCastException e) {\n        // skip\n        } catch (Throwable e) {\n            throw new JSONException(\"create asm serializer error, class \" + clazz, e);\n        }\n    }\n    return new JavaBeanSerializer(clazz);\n}",
+    "line": 94
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getModifiers",
+    "caller": "clazz",
+    "expression": "clazz.getModifiers()",
+    "file": "157.txt",
+    "codeBlockLine": 93,
+    "codeBlock": "{\n    if (!Modifier.isPublic(clazz.getModifiers())) {\n        return new JavaBeanSerializer(clazz);\n    }\n    boolean asm = this.asm;\n    if (asm && asmFactory.isExternalClass(clazz) || clazz == Serializable.class || clazz == Object.class) {\n        asm = false;\n    }\n    {\n        JSONType annotation = clazz.getAnnotation(JSONType.class);\n        if (annotation != null && annotation.asm() == false) {\n            asm = false;\n        }\n    }\n    if (asm && !ASMUtils.checkName(clazz.getName())) {\n        asm = false;\n    }\n    for (Field field : clazz.getDeclaredFields()) {\n        JSONField annotation = field.getAnnotation(JSONField.class);\n        if (annotation != null && !ASMUtils.checkName(annotation.name())) {\n            asm = false;\n            break;\n        }\n    }\n    if (asm) {\n        try {\n            ObjectSerializer asmSerializer = createASMSerializer(clazz);\n            if (asmSerializer != null) {\n                return asmSerializer;\n            }\n        } catch (ClassCastException e) {\n        // skip\n        } catch (Throwable e) {\n            throw new JSONException(\"create asm serializer error, class \" + clazz, e);\n        }\n    }\n    return new JavaBeanSerializer(clazz);\n}",
+    "line": 94
+  },
+  {
+    "codeBlockLine": 105,
+    "codeBlock": "{\n    JSONType annotation = clazz.getAnnotation(JSONType.class);\n    if (annotation != null && annotation.asm() == false) {\n        asm = false;\n    }\n}"
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getName",
+    "caller": "clazz",
+    "expression": "clazz.getName()",
+    "file": "157.txt",
+    "codeBlockLine": 93,
+    "codeBlock": "{\n    if (!Modifier.isPublic(clazz.getModifiers())) {\n        return new JavaBeanSerializer(clazz);\n    }\n    boolean asm = this.asm;\n    if (asm && asmFactory.isExternalClass(clazz) || clazz == Serializable.class || clazz == Object.class) {\n        asm = false;\n    }\n    {\n        JSONType annotation = clazz.getAnnotation(JSONType.class);\n        if (annotation != null && annotation.asm() == false) {\n            asm = false;\n        }\n    }\n    if (asm && !ASMUtils.checkName(clazz.getName())) {\n        asm = false;\n    }\n    for (Field field : clazz.getDeclaredFields()) {\n        JSONField annotation = field.getAnnotation(JSONField.class);\n        if (annotation != null && !ASMUtils.checkName(annotation.name())) {\n            asm = false;\n            break;\n        }\n    }\n    if (asm) {\n        try {\n            ObjectSerializer asmSerializer = createASMSerializer(clazz);\n            if (asmSerializer != null) {\n                return asmSerializer;\n            }\n        } catch (ClassCastException e) {\n        // skip\n        } catch (Throwable e) {\n            throw new JSONException(\"create asm serializer error, class \" + clazz, e);\n        }\n    }\n    return new JavaBeanSerializer(clazz);\n}",
+    "line": 112
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getDeclaredFields",
+    "caller": "clazz",
+    "expression": "clazz.getDeclaredFields()",
+    "file": "157.txt",
+    "codeBlockLine": 93,
+    "codeBlock": "{\n    if (!Modifier.isPublic(clazz.getModifiers())) {\n        return new JavaBeanSerializer(clazz);\n    }\n    boolean asm = this.asm;\n    if (asm && asmFactory.isExternalClass(clazz) || clazz == Serializable.class || clazz == Object.class) {\n        asm = false;\n    }\n    {\n        JSONType annotation = clazz.getAnnotation(JSONType.class);\n        if (annotation != null && annotation.asm() == false) {\n            asm = false;\n        }\n    }\n    if (asm && !ASMUtils.checkName(clazz.getName())) {\n        asm = false;\n    }\n    for (Field field : clazz.getDeclaredFields()) {\n        JSONField annotation = field.getAnnotation(JSONField.class);\n        if (annotation != null && !ASMUtils.checkName(annotation.name())) {\n            asm = false;\n            break;\n        }\n    }\n    if (asm) {\n        try {\n            ObjectSerializer asmSerializer = createASMSerializer(clazz);\n            if (asmSerializer != null) {\n                return asmSerializer;\n            }\n        } catch (ClassCastException e) {\n        // skip\n        } catch (Throwable e) {\n            throw new JSONException(\"create asm serializer error, class \" + clazz, e);\n        }\n    }\n    return new JavaBeanSerializer(clazz);\n}",
+    "line": 116
+  },
+  {
+    "codeBlockLine": 116,
+    "codeBlock": "{\n    JSONField annotation = field.getAnnotation(JSONField.class);\n    if (annotation != null && !ASMUtils.checkName(annotation.name())) {\n        asm = false;\n        break;\n    }\n}"
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "com.alibaba.fastjson.serializer.SerializeConfig.createASMSerializer",
+    "expression": "createASMSerializer(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 125,
+    "codeBlock": "{\n    ObjectSerializer asmSerializer = createASMSerializer(clazz);\n    if (asmSerializer != null) {\n        return asmSerializer;\n    }\n}",
+    "line": 126
+  },
+  {
+    "args": ["\"java.awt.Color\""],
+    "fqn": "java.lang.Class.forName",
+    "caller": "Class",
+    "expression": "Class.forName(\"java.awt.Color\")",
+    "file": "157.txt",
+    "codeBlockLine": 220,
+    "codeBlock": "{\n    put(Class.forName(\"java.awt.Color\"), ColorCodec.instance);\n    put(Class.forName(\"java.awt.Font\"), FontCodec.instance);\n    put(Class.forName(\"java.awt.Point\"), PointCodec.instance);\n    put(Class.forName(\"java.awt.Rectangle\"), RectangleCodec.instance);\n}",
+    "line": 221
+  },
+  {
+    "args": ["\"java.awt.Font\""],
+    "fqn": "java.lang.Class.forName",
+    "caller": "Class",
+    "expression": "Class.forName(\"java.awt.Font\")",
+    "file": "157.txt",
+    "codeBlockLine": 220,
+    "codeBlock": "{\n    put(Class.forName(\"java.awt.Color\"), ColorCodec.instance);\n    put(Class.forName(\"java.awt.Font\"), FontCodec.instance);\n    put(Class.forName(\"java.awt.Point\"), PointCodec.instance);\n    put(Class.forName(\"java.awt.Rectangle\"), RectangleCodec.instance);\n}",
+    "line": 222
+  },
+  {
+    "args": ["\"java.awt.Point\""],
+    "fqn": "java.lang.Class.forName",
+    "caller": "Class",
+    "expression": "Class.forName(\"java.awt.Point\")",
+    "file": "157.txt",
+    "codeBlockLine": 220,
+    "codeBlock": "{\n    put(Class.forName(\"java.awt.Color\"), ColorCodec.instance);\n    put(Class.forName(\"java.awt.Font\"), FontCodec.instance);\n    put(Class.forName(\"java.awt.Point\"), PointCodec.instance);\n    put(Class.forName(\"java.awt.Rectangle\"), RectangleCodec.instance);\n}",
+    "line": 223
+  },
+  {
+    "args": ["\"java.awt.Rectangle\""],
+    "fqn": "java.lang.Class.forName",
+    "caller": "Class",
+    "expression": "Class.forName(\"java.awt.Rectangle\")",
+    "file": "157.txt",
+    "codeBlockLine": 220,
+    "codeBlock": "{\n    put(Class.forName(\"java.awt.Color\"), ColorCodec.instance);\n    put(Class.forName(\"java.awt.Font\"), FontCodec.instance);\n    put(Class.forName(\"java.awt.Point\"), PointCodec.instance);\n    put(Class.forName(\"java.awt.Rectangle\"), RectangleCodec.instance);\n}",
+    "line": 224
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Thread.getContextClassLoader",
+    "caller": "Thread.currentThread()",
+    "expression": "Thread.currentThread().getContextClassLoader()",
+    "file": "157.txt",
+    "codeBlockLine": 253,
+    "codeBlock": "{\n    final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();\n    for (Object o : ServiceLoader.load(AutowiredObjectSerializer.class, classLoader)) {\n        if (!(o instanceof AutowiredObjectSerializer)) {\n            continue;\n        }\n        AutowiredObjectSerializer autowired = (AutowiredObjectSerializer) o;\n        for (Type forType : autowired.getAutowiredFor()) {\n            put(forType, autowired);\n        }\n    }\n}",
+    "line": 254
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Thread.currentThread",
+    "caller": "Thread",
+    "expression": "Thread.currentThread()",
+    "file": "157.txt",
+    "codeBlockLine": 253,
+    "codeBlock": "{\n    final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();\n    for (Object o : ServiceLoader.load(AutowiredObjectSerializer.class, classLoader)) {\n        if (!(o instanceof AutowiredObjectSerializer)) {\n            continue;\n        }\n        AutowiredObjectSerializer autowired = (AutowiredObjectSerializer) o;\n        for (Type forType : autowired.getAutowiredFor()) {\n            put(forType, autowired);\n        }\n    }\n}",
+    "line": 254
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Thread.getContextClassLoader",
+    "caller": "Thread.currentThread()",
+    "expression": "Thread.currentThread().getContextClassLoader()",
+    "file": "157.txt",
+    "codeBlockLine": 272,
+    "codeBlock": "{\n    final ClassLoader classLoader = JSON.class.getClassLoader();\n    if (classLoader != Thread.currentThread().getContextClassLoader()) {\n        try {\n            for (Object o : ServiceLoader.load(AutowiredObjectSerializer.class, classLoader)) {\n                if (!(o instanceof AutowiredObjectSerializer)) {\n                    continue;\n                }\n                AutowiredObjectSerializer autowired = (AutowiredObjectSerializer) o;\n                for (Type forType : autowired.getAutowiredFor()) {\n                    put(forType, autowired);\n                }\n            }\n        } catch (ClassCastException ex) {\n        // skip\n        }\n        writer = get(clazz);\n    }\n}",
+    "line": 274
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Thread.currentThread",
+    "caller": "Thread",
+    "expression": "Thread.currentThread()",
+    "file": "157.txt",
+    "codeBlockLine": 272,
+    "codeBlock": "{\n    final ClassLoader classLoader = JSON.class.getClassLoader();\n    if (classLoader != Thread.currentThread().getContextClassLoader()) {\n        try {\n            for (Object o : ServiceLoader.load(AutowiredObjectSerializer.class, classLoader)) {\n                if (!(o instanceof AutowiredObjectSerializer)) {\n                    continue;\n                }\n                AutowiredObjectSerializer autowired = (AutowiredObjectSerializer) o;\n                for (Type forType : autowired.getAutowiredFor()) {\n                    put(forType, autowired);\n                }\n            }\n        } catch (ClassCastException ex) {\n        // skip\n        }\n        writer = get(clazz);\n    }\n}",
+    "line": 274
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "Map.class",
+    "expression": "Map.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 296
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "List.class",
+    "expression": "List.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 298
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "Collection.class",
+    "expression": "Collection.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 300
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "Date.class",
+    "expression": "Date.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 302
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.isEnum",
+    "caller": "clazz",
+    "expression": "clazz.isEnum()",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 310
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getSuperclass",
+    "caller": "clazz",
+    "expression": "clazz.getSuperclass()",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 310
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.isEnum",
+    "caller": "clazz.getSuperclass()",
+    "expression": "clazz.getSuperclass().isEnum()",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 310
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getSuperclass",
+    "caller": "clazz",
+    "expression": "clazz.getSuperclass()",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 310
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.isArray",
+    "caller": "clazz",
+    "expression": "clazz.isArray()",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 312
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getComponentType",
+    "caller": "clazz",
+    "expression": "clazz.getComponentType()",
+    "file": "157.txt",
+    "codeBlockLine": 312,
+    "codeBlock": "{\n    Class<?> componentType = clazz.getComponentType();\n    ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n    put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n}",
+    "line": 313
+  },
+  {
+    "args": ["componentType"],
+    "fqn": "com.alibaba.fastjson.serializer.SerializeConfig.getObjectWriter",
+    "expression": "getObjectWriter(componentType)",
+    "file": "157.txt",
+    "codeBlockLine": 312,
+    "codeBlock": "{\n    Class<?> componentType = clazz.getComponentType();\n    ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n    put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n}",
+    "line": 314
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "Throwable.class",
+    "expression": "Throwable.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 316
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "TimeZone.class",
+    "expression": "TimeZone.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 318
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "Appendable.class",
+    "expression": "Appendable.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 320
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "Charset.class",
+    "expression": "Charset.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 322
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "Enumeration.class",
+    "expression": "Enumeration.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 324
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "Calendar.class",
+    "expression": "Calendar.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 326
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.Class.isAssignableFrom",
+    "caller": "Clob.class",
+    "expression": "Clob.class.isAssignableFrom(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 295,
+    "codeBlock": "{\n    if (Map.class.isAssignableFrom(clazz)) {\n        put(clazz, MapSerializer.instance);\n    } else if (List.class.isAssignableFrom(clazz)) {\n        put(clazz, ListSerializer.instance);\n    } else if (Collection.class.isAssignableFrom(clazz)) {\n        put(clazz, CollectionSerializer.instance);\n    } else if (Date.class.isAssignableFrom(clazz)) {\n        put(clazz, DateSerializer.instance);\n    } else if (JSONAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONAwareSerializer.instance);\n    } else if (JSONSerializable.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONSerializableSerializer.instance);\n    } else if (JSONStreamAware.class.isAssignableFrom(clazz)) {\n        put(clazz, JSONStreamAwareSerializer.instance);\n    } else if (clazz.isEnum() || (clazz.getSuperclass() != null && clazz.getSuperclass().isEnum())) {\n        put(clazz, EnumSerializer.instance);\n    } else if (clazz.isArray()) {\n        Class<?> componentType = clazz.getComponentType();\n        ObjectSerializer compObjectSerializer = getObjectWriter(componentType);\n        put(clazz, new ArraySerializer(componentType, compObjectSerializer));\n    } else if (Throwable.class.isAssignableFrom(clazz)) {\n        put(clazz, new ExceptionSerializer(clazz));\n    } else if (TimeZone.class.isAssignableFrom(clazz)) {\n        put(clazz, TimeZoneCodec.instance);\n    } else if (Appendable.class.isAssignableFrom(clazz)) {\n        put(clazz, AppendableSerializer.instance);\n    } else if (Charset.class.isAssignableFrom(clazz)) {\n        put(clazz, CharsetCodec.instance);\n    } else if (Enumeration.class.isAssignableFrom(clazz)) {\n        put(clazz, EnumerationSeriliazer.instance);\n    } else if (Calendar.class.isAssignableFrom(clazz)) {\n        put(clazz, CalendarCodec.instance);\n    } else if (Clob.class.isAssignableFrom(clazz)) {\n        put(clazz, ClobSeriliazer.instance);\n    } else {\n        boolean isCglibProxy = false;\n        boolean isJavassistProxy = false;\n        for (Class<?> item : clazz.getInterfaces()) {\n            if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n                isCglibProxy = true;\n                break;\n            } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n                isJavassistProxy = true;\n                break;\n            }\n        }\n        if (isCglibProxy || isJavassistProxy) {\n            Class<?> superClazz = clazz.getSuperclass();\n            ObjectSerializer superWriter = getObjectWriter(superClazz);\n            put(clazz, superWriter);\n            return superWriter;\n        }\n        if (Proxy.isProxyClass(clazz)) {\n            put(clazz, createJavaBeanSerializer(clazz));\n        } else {\n            put(clazz, createJavaBeanSerializer(clazz));\n        }\n    }\n    writer = get(clazz);\n}",
+    "line": 328
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getInterfaces",
+    "caller": "clazz",
+    "expression": "clazz.getInterfaces()",
+    "file": "157.txt",
+    "codeBlockLine": 330,
+    "codeBlock": "{\n    boolean isCglibProxy = false;\n    boolean isJavassistProxy = false;\n    for (Class<?> item : clazz.getInterfaces()) {\n        if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n            isCglibProxy = true;\n            break;\n        } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n            isJavassistProxy = true;\n            break;\n        }\n    }\n    if (isCglibProxy || isJavassistProxy) {\n        Class<?> superClazz = clazz.getSuperclass();\n        ObjectSerializer superWriter = getObjectWriter(superClazz);\n        put(clazz, superWriter);\n        return superWriter;\n    }\n    if (Proxy.isProxyClass(clazz)) {\n        put(clazz, createJavaBeanSerializer(clazz));\n    } else {\n        put(clazz, createJavaBeanSerializer(clazz));\n    }\n}",
+    "line": 333
+  },
+  {
+    "args": ["\"net.sf.cglib.proxy.Factory\""],
+    "fqn": "java.lang.String.equals",
+    "caller": "item.getName()",
+    "expression": "item.getName().equals(\"net.sf.cglib.proxy.Factory\")",
+    "file": "157.txt",
+    "codeBlockLine": 333,
+    "codeBlock": "{\n    if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n        isCglibProxy = true;\n        break;\n    } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n        isJavassistProxy = true;\n        break;\n    }\n}",
+    "line": 334
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getName",
+    "caller": "item",
+    "expression": "item.getName()",
+    "file": "157.txt",
+    "codeBlockLine": 333,
+    "codeBlock": "{\n    if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n        isCglibProxy = true;\n        break;\n    } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n        isJavassistProxy = true;\n        break;\n    }\n}",
+    "line": 334
+  },
+  {
+    "args": ["\"org.springframework.cglib.proxy.Factory\""],
+    "fqn": "java.lang.String.equals",
+    "caller": "item.getName()",
+    "expression": "item.getName().equals(\"org.springframework.cglib.proxy.Factory\")",
+    "file": "157.txt",
+    "codeBlockLine": 333,
+    "codeBlock": "{\n    if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n        isCglibProxy = true;\n        break;\n    } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n        isJavassistProxy = true;\n        break;\n    }\n}",
+    "line": 335
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getName",
+    "caller": "item",
+    "expression": "item.getName()",
+    "file": "157.txt",
+    "codeBlockLine": 333,
+    "codeBlock": "{\n    if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n        isCglibProxy = true;\n        break;\n    } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n        isJavassistProxy = true;\n        break;\n    }\n}",
+    "line": 335
+  },
+  {
+    "args": ["\"javassist.util.proxy.ProxyObject\""],
+    "fqn": "java.lang.String.equals",
+    "caller": "item.getName()",
+    "expression": "item.getName().equals(\"javassist.util.proxy.ProxyObject\")",
+    "file": "157.txt",
+    "codeBlockLine": 333,
+    "codeBlock": "{\n    if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n        isCglibProxy = true;\n        break;\n    } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n        isJavassistProxy = true;\n        break;\n    }\n}",
+    "line": 338
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getName",
+    "caller": "item",
+    "expression": "item.getName()",
+    "file": "157.txt",
+    "codeBlockLine": 333,
+    "codeBlock": "{\n    if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n        isCglibProxy = true;\n        break;\n    } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n        isJavassistProxy = true;\n        break;\n    }\n}",
+    "line": 338
+  },
+  {
+    "args": [],
+    "fqn": "java.lang.Class.getSuperclass",
+    "caller": "clazz",
+    "expression": "clazz.getSuperclass()",
+    "file": "157.txt",
+    "codeBlockLine": 344,
+    "codeBlock": "{\n    Class<?> superClazz = clazz.getSuperclass();\n    ObjectSerializer superWriter = getObjectWriter(superClazz);\n    put(clazz, superWriter);\n    return superWriter;\n}",
+    "line": 345
+  },
+  {
+    "args": ["superClazz"],
+    "fqn": "com.alibaba.fastjson.serializer.SerializeConfig.getObjectWriter",
+    "expression": "getObjectWriter(superClazz)",
+    "file": "157.txt",
+    "codeBlockLine": 344,
+    "codeBlock": "{\n    Class<?> superClazz = clazz.getSuperclass();\n    ObjectSerializer superWriter = getObjectWriter(superClazz);\n    put(clazz, superWriter);\n    return superWriter;\n}",
+    "line": 347
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "java.lang.reflect.Proxy.isProxyClass",
+    "caller": "Proxy",
+    "expression": "Proxy.isProxyClass(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 330,
+    "codeBlock": "{\n    boolean isCglibProxy = false;\n    boolean isJavassistProxy = false;\n    for (Class<?> item : clazz.getInterfaces()) {\n        if (item.getName().equals(\"net.sf.cglib.proxy.Factory\") || item.getName().equals(\"org.springframework.cglib.proxy.Factory\")) {\n            isCglibProxy = true;\n            break;\n        } else if (item.getName().equals(\"javassist.util.proxy.ProxyObject\")) {\n            isJavassistProxy = true;\n            break;\n        }\n    }\n    if (isCglibProxy || isJavassistProxy) {\n        Class<?> superClazz = clazz.getSuperclass();\n        ObjectSerializer superWriter = getObjectWriter(superClazz);\n        put(clazz, superWriter);\n        return superWriter;\n    }\n    if (Proxy.isProxyClass(clazz)) {\n        put(clazz, createJavaBeanSerializer(clazz));\n    } else {\n        put(clazz, createJavaBeanSerializer(clazz));\n    }\n}",
+    "line": 352
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "com.alibaba.fastjson.serializer.SerializeConfig.createJavaBeanSerializer",
+    "expression": "createJavaBeanSerializer(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 352,
+    "codeBlock": "{\n    put(clazz, createJavaBeanSerializer(clazz));\n}",
+    "line": 353
+  },
+  {
+    "args": ["clazz"],
+    "fqn": "com.alibaba.fastjson.serializer.SerializeConfig.createJavaBeanSerializer",
+    "expression": "createJavaBeanSerializer(clazz)",
+    "file": "157.txt",
+    "codeBlockLine": 354,
+    "codeBlock": "{\n    put(clazz, createJavaBeanSerializer(clazz));\n}",
+    "line": 355
+  }
+]
