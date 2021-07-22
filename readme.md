@@ -17,9 +17,19 @@ This tool is modified from https://github.com/mhilmiasyrofi/ausearch in order to
 ## How to Run
 
 ```
-<go to your project directory>
+// Create docker container
+docker-compose build
 
+// Get into the container
+docker exec -it java-method-resolver bash
+
+[In the container]
+// go to your project directory
+cd /app/JavaMethodFQNResolver
+
+// compile project with maven
 mvn clean compile assembly:single
 
+// run the jar 
 java -cp target/method-fqn-resolver-1.0-SNAPSHOT-jar-with-dependencies.jar com.project.methodfqnresolver.App
 ```
